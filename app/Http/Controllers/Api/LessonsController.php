@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Lesson;
 use App\Transformers\LessonsTransformer;
@@ -36,8 +36,6 @@ class LessonsController extends ApiController
 
 
         $lessons = Lesson::paginate($limit);
-
-//        dd(get_class_methods($lessons));
 
         $data = $this->lessonTransformer->transformCollection($lessons->all());
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Pagination\Paginator;
 use Response;
 use Symfony\Component\HttpFoundation\Response as Foundationresponse;
