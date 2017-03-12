@@ -1,3 +1,3 @@
 <footer class="footer">
-    <p>&copy; 2017 Company, Inc.</p>
+    <p class="text-center">&copy; 2017 Company, Inc.</p>
 </footer>
