@@ -23,10 +23,14 @@
 <body>
     <div id="app">
 
+
         {{--公共的头部--}}
         @include('layouts._header')
 
         <div class="container">
+
+            @include('layouts._flash')
+
             @yield('content')
         </div>
 
@@ -38,5 +42,10 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+
+    <script>
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 </body>
 </html>

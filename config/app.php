@@ -169,6 +169,13 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
+         * 第三方 Providers...
+         */
+
+        Naux\Mail\SendCloudServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

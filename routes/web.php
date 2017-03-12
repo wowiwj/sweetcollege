@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', function (){
     return view('welcome');
 });
+
+
+Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
+
