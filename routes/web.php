@@ -24,5 +24,16 @@ Route::get('/test', function (){
 });
 
 
+Route::group(['namespace' => 'Web'], function () {
+
+    Route::post('register','UsersController@store');
+
+    Route::post('login','SessionsController@store');
+
+});
+
+
+
+
 Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
 

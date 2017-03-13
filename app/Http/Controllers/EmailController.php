@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Providers\AuthServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +22,7 @@ class EmailController extends Controller
 
         if (is_null($user)){
 
+            flash('验证token失败', 'danger');
             return back();
 
         }
@@ -29,6 +30,7 @@ class EmailController extends Controller
         $user->activated = true;
         $user->activation_token = str_random(60);
         $user->save();
+        flash('欢迎回来','success');
 
         Auth::login($user);
 

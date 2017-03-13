@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 
 use Mail;
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -57,6 +57,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -65,33 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
-
-//        $this->sendVerifyEmailTo($user);
-
-        return $user;
     }
 
-
-    public function sendVerifyEmailTo($user)
-    {
-        // 模板变量
-        $bind_data = [
-            'url' => route('email.verify',['token'=>$user->activation_token]),
-            'name' => $user->name
-        ];
-        $template = new SendCloudTemplate('sweetcollege_app_register', $bind_data);
-
-        Mail::raw($template, function ($message) use($user) {
-            $message->from('sweetcollage@sweetcollege.cn', 'SweetCollege');
-
-            $message->to($user->email);
-        });
-
-
-    }
 }
