@@ -54,7 +54,34 @@ class UsersController extends Controller
     public function edit(User $user)
     {
 
-        return view('users.edit',compact($user));
+        $this->authorize('update',$user);
+
+        return view('users.edit',compact('user'));
+    }
+
+    public function update(Request $request,User $user)
+    {
+
+        $this->authorize('update',$user);
+
+        $data = array_filter([
+            'gender' => $request->gender,
+            'real_name' => $request->real_name,
+            'city' => $request->city,
+            'introduction' => $request->introduction
+        ]);
+
+        $user->update($data);
+        $user->save();
+
+        flash('用户资料更新成功','success');
+
+        return back();
+
+        return $data;
+
+
+        return request()->all();
     }
 
 }
