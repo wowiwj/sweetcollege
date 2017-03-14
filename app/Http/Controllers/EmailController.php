@@ -28,7 +28,7 @@ class EmailController extends Controller
         }
 
         $user->activated = true;
-        $user->activation_token = str_random(60);
+        $user->activation_token = null;
         $user->save();
         flash('欢迎回来','success');
 

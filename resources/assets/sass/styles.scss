@@ -1,6 +1,105 @@
+
 body{
   padding-top: 60px;
 
+}
+
+.box {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
+}
+
+h3.media-heading{
+
+  font-size: 21px;
+}
+
+.media-body {
+  width: 10000px;
+}
+
+.media:first-child {
+  margin-top: 0;
+}
+
+.media-left, .media-right, .media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media > .pull-left {
+  padding-right: 10px;
+}
+
+.btn-primary{
+
+  background-color: $sweetcollege-primary-color;
+  border-color: $sweetcollege-primary-color;
+}
+
+object.img-thumbnail {
+  max-width: none;
+}
+
+.avatar-101 {
+  width: 101px;
+  height: 101px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.empty-block {
+  text-align: center;
+  line-height: 60px;
+  margin: 10px;
+  color: #ccc;
+}
+
+
+.user-basic-info .media-heading {
+  margin: 10px 0px;
+}
+
+
+.user-basic-info .item {
+  margin: 6px 0;
+}
+
+.user-basic-info .follow-info {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.user-basic-info .follow-info a.counter {
+  font-size: 25px;
+  //color: #00b5ad;
+  color: $sweetcollege-primary-color;
+}
+
+.user-basic-info .follow-info a {
+  display: block;
+  text-decoration: none;
+}
+
+.user-basic-info .follow-info a.text {
+  color: #999;
+}
+
+.user-basic-info .follow-info a {
+  display: block;
+  text-decoration: none;
+}
+
+span.timeago {
+  color: #aaa;
+}
+
+.padding-sm {
+  padding: 10px;
 }
 
 

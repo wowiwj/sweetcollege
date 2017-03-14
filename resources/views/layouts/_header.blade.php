@@ -39,17 +39,29 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
+
                             <li>
-                                <a href="{{ route('logout') }}"
+                                <a href="{{ route('users.show',Auth::user()->id)  }}">个人中心</a>
+                            </li>
+
+                            <li><a href="{{ route('users.edit', Auth::user()->id) }}">编辑资料</a></li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a class="btn bg-danger" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    Logout
+                                    退出登录
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
+
+
                         </ul>
                     </li>
                 @endif

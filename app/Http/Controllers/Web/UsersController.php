@@ -11,6 +11,14 @@ use Naux\Mail\SendCloudTemplate;
 
 class UsersController extends Controller
 {
+
+
+    public function index()
+    {
+
+        return view('users.index');
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -32,6 +40,21 @@ class UsersController extends Controller
 
         return redirect('login');
 
+    }
+
+
+    public function show(User $user)
+    {
+
+
+        return view('users.show');
+
+    }
+
+    public function edit(User $user)
+    {
+
+        return view('users.edit',compact($user));
     }
 
 }
