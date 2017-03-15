@@ -16,6 +16,8 @@ require('./bootstrap');
 require('./main')
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('confessionsPublisher', require('./components/ConfessionsPublish.vue'));
+
 
 const app = new Vue({
     el: '#app'

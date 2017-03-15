@@ -1,0 +1,50 @@
+.publish-confessions{
+  background-color: #F2FBF7;
+  padding: 20px;
+
+  input{
+
+    width: 1px;
+    height: 1px;
+
+  }
+
+  .fileinput-button input{
+    position:absolute;
+    right: 0px;
+    top:0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 1px;
+  }
+
+  .mgb10{
+
+    margin-bottom: 10px;
+
+  }
+
+  .publish-confessions textarea{
+
+    padding-bottom: 10px;
+  }
+
+  .pushbutton{
+
+    background-color: #00b5ad;
+    color: white;
+
+
+  }
+
+
+  .clear{
+    clear: both;
+
+  }
+
+
+}
+
+
+

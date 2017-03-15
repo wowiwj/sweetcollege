@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Lesson::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Lesson::class, function (Faker\Generator $faker) {
 
     return [
         'title' => $faker->sentence,
@@ -33,13 +33,24 @@ $factory->define(App\Lesson::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => $faker->factory('App\Models\User')->create()->id,
+        'name' => $faker->sentence,
+        'path' => $faker->sentence,
+        'thumbnail_path' => $faker->sentence,
+
+    ];
+});
+
+
 $factory->define(App\Tag::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->sentence
     ];
 });
-
 
 
 

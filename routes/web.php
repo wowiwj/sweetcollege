@@ -32,6 +32,8 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::post('login','SessionsController@store');
 
+    Route::resource('confessions','ConfessionsController');
+
 });
 
 
