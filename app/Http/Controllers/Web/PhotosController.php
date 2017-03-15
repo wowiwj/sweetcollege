@@ -25,12 +25,16 @@ class PhotosController extends Controller
     function upload(Request $request)
     {
 
-        $file = $request->file('file');
+        $file = $request->file('photo');
 
         $photo = (new PhotosManager($file))->store();
-        $this->photo->save($photo->toArray());
+        $photo = $this->photo->save($photo->toArray());
 
-        return $photo;
+
+        return response()->json([
+            'id' => $photo->id,
+            'name' => $photo->name
+        ]);
 
     }
 }

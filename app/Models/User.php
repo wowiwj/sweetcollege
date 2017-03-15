@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->hasMany(Photo::class);
     }
 
+    public function confessions(){
+
+        return $this->hasMany(Confession::class);
+    }
+
 
     public static function boot()
     {
@@ -48,6 +53,8 @@ class User extends Authenticatable
         });
 
     }
+
+
 
     public function sendVerifyEmail()
     {

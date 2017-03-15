@@ -11,7 +11,7 @@ class Confession extends Model
 
 
 
-    public function confessions()
+    public function photos()
     {
         return $this->morphMany(Photo::class,'commentable');
     }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Confession;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class ConfessionsController extends Controller
 {
@@ -25,15 +28,24 @@ class ConfessionsController extends Controller
     {
 
 
-        $arr = $request->file('file');
 
-        //return $arr;
+        $content = $request->content;
 
-        return array_map(function ($item){
+        $confession = Auth::user()->confessions()->create([
+            'content' => $content
+        ]);
+        
+        if (!is_null($request->images)){
 
-            return $item->move('public/avatar/user1');
+            $collection = collect($request->images);
+            $collection->each(function ($item,$key) use ($confession){
+                $photo = Photo::find($item);
+                $confession->photos()->save($photo);
+            });
 
-        },$arr);
+        }
+
+        return $confession->load('photos');
 
     }
 }
