@@ -22,8 +22,8 @@ class CreatePhotosTable extends Migration
             $table->string('path');
             $table->string('thumbnail_path');
 
-            $table->integer('commentable_id');
-            $table->string('commentable_type');
+            $table->integer('commentable_id')->nullable();
+            $table->string('commentable_type')->nullable();
 
             $table->timestamps();
         });

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/libs.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -41,11 +42,17 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ mix('js/libs.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 
     <script>
         $('#flash-overlay-modal').modal();
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
+
+
+    @yield('scripts.footer')
+
+
 </body>
 </html>

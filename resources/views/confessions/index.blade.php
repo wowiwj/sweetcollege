@@ -30,9 +30,14 @@
                     <button class="btn btn-default pushbutton pull-right" type="submit">立即发表</button>
 
 
-                    <img id="preview"  alt="">
+
 
                     <div class="clear"></div>
+
+                </form>
+
+                <form method="post" action="{{ route('photos.upload') }}" class="dropzone">
+                    {{ csrf_field() }}
 
                 </form>
 

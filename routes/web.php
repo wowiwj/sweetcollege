@@ -34,6 +34,8 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::resource('confessions','ConfessionsController');
 
+    Route::post('photos','PhotosController@upload')->name('photos.upload');
+
 });
 
 

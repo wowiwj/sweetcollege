@@ -29,6 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
+
     public static function boot()
     {
         parent::boot();
@@ -54,7 +60,7 @@ class User extends Authenticatable
         $template = new SendCloudTemplate('sweetcollege_app_register', $bind_data);
 
         Mail::raw($template, function ($message) use($user) {
-            $message->from('sweetcollage@sweetcollege.cn', 'SweetCollege');
+            $message->from('sweetcollage@Sweetcollege.cn', 'SweetCollege');
 
             $message->to($user->email);
         });
