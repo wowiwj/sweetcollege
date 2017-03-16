@@ -29,13 +29,13 @@ class ConfessionsController extends Controller
 
 
 
-        $content = $request->content;
+        $content = $request->get('content');
 
         $confession = Auth::user()->confessions()->create([
             'content' => $content
         ]);
-        
-        if (!is_null($request->images)){
+
+        if ($request->has('images')){
 
             $collection = collect($request->images);
             $collection->each(function ($item,$key) use ($confession){

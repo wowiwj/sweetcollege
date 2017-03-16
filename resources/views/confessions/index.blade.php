@@ -20,7 +20,6 @@
                     <span class="btn btn-success fileinput-button pull-left">
                         <span class="glyphicon glyphicon-camera">
                         </span>
-                        {{--<input name="file[]" type="file" id="filesInput" >--}}
                     </span>
 
                     <div id="images">
@@ -45,6 +44,8 @@
             </div>
 
         </div>
+
+        <button class="btn btn-primary">测试</button>
 
         <div class="col-md-4">
             <div class="box">

@@ -3,18 +3,46 @@
 
 
 
+
+
+
 $(function () {
 
-    function  openFileInput(){
+    function openDropzone() {
 
-        $('#filesInput').click();
+        alert(1);
 
     }
 
-
     $('.fileinput-button').click(function () {
-        openFileInput();
+
+        if ($("#addPhotosForm").is(':hidden'))
+        {
+            $("#addPhotosForm").show();
+            return
+
+        }
+
+        $("#addPhotosForm").hide();
 
     });
+
+
+
+    // function  openFileInput(){
+    //
+    //     $('.fileinput-button').hide();
+    //
+    //     //$('#filesInput').click();
+    //
+    // }
+
+
+    // $('.fileinput-button').click(function () {
+    //     $('.fileinput-button').hide();
+    //
+    // });
+
+
 
 });
