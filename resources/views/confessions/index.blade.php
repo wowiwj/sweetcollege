@@ -36,7 +36,7 @@
 
                 <div id="dropz"></div>
 
-                <form id="addPhotosForm" method="post" action="{{ route('photos.upload') }}" class="dropzone">
+                <form hidden="hidden" id="addPhotosForm" method="post" action="{{ route('photos.upload') }}" class="dropzone">
                     {{ csrf_field() }}
 
                 </form>

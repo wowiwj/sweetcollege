@@ -13,6 +13,8 @@ class ConfessionsController extends Controller
 {
     public function index()
     {
+        $this->middleware('auth');
+
         return view('confessions.index');
 
 
