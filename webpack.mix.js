@@ -17,8 +17,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.styles([
     'resources/assets/css/libs/dropzone.min.css',
+    'resources/assets/css/libs/viewer.min.css'
 ],'public/css/libs.css');
 
 mix.scripts([
     'resources/assets/js/libs/dropzone.min.js',
+    'resources/assets/js/libs/viewer.js'
 ], 'public/js/libs.js');

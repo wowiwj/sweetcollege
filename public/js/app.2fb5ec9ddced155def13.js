@@ -12325,6 +12325,41 @@ window.axios.defaults.headers.common = {
 
 $(function () {
 
+    //添加大图查看功能
+    var options = {
+        // inline: true,
+        url: 'data-original',
+        ready: function ready(e) {
+            console.log(e.type);
+        },
+        show: function show(e) {
+            console.log(e.type);
+        },
+        shown: function shown(e) {
+            console.log(e.type);
+        },
+        hide: function hide(e) {
+            console.log(e.type);
+        },
+        hidden: function hidden(e) {
+            console.log(e.type);
+        },
+        view: function view(e) {
+            console.log(e.type);
+        },
+        viewed: function viewed(e) {
+            console.log(e.type);
+            // this.viewer.zoomTo(1).rotateTo(180);
+        }
+    };
+
+    var imageBoxes = document.getElementsByClassName('images-view');
+
+    for (var i = 0; i < imageBoxes.length; i++) {
+        new Viewer(imageBoxes[i], options);
+    }
+
+    // 拖拽上传
     function openDropzone() {
 
         alert(1);
@@ -12339,21 +12374,6 @@ $(function () {
 
         $("#addPhotosForm").hide();
     });
-
-    // function  openFileInput(){
-    //
-    //     $('.fileinput-button').hide();
-    //
-    //     //$('#filesInput').click();
-    //
-    // }
-
-
-    // $('.fileinput-button').click(function () {
-    //     $('.fileinput-button').hide();
-    //
-    // });
-
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 

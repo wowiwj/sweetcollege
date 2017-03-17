@@ -10,17 +10,24 @@
 
             @if(count($confession->photos) )
 
-                <div style="padding: 10px">
+                <div class="images-view">
+                    <ul class="photos clearfix">
 
                         @foreach($confession->photos as $photo)
-
-                            <img width="30%" src="{{ url('/'.$photo->thumbnail_path) }}" alt="{{ $photo->name }}" class="img-responsive1">
+                            <li>
+                                <img data-original="{{ '/'.$photo->path }}" src="{{ '/'.$photo->thumbnail_path }}" alt="{{ $photo->name }}">
+                            </li>
 
                         @endforeach
 
-                </div>
+                    </ul>
 
+                    <div class="clear"></div>
+
+                </div>
             @endif
+
+
         </div>
 
 
