@@ -34,8 +34,6 @@
 
                 </form>
 
-                <div id="dropz"></div>
-
                 <form hidden="hidden" id="addPhotosForm" method="post" action="{{ route('photos.upload') }}" class="dropzone">
                     {{ csrf_field() }}
 
@@ -43,9 +41,23 @@
 
             </div>
 
-        </div>
 
-        <button class="btn btn-primary">测试</button>
+            {{--内容模块--}}
+
+            <div class="confessions-contents">
+
+                @foreach($confessions as $confession)
+
+                    @include('confessions._content')
+
+                @endforeach
+
+                <div class="clear"></div>
+            </div>
+
+
+
+        </div>
 
         <div class="col-md-4">
             <div class="box">

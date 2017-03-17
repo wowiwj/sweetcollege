@@ -11,17 +11,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ConfessionsController extends Controller
 {
-    public function index()
+
+    public function __construct()
     {
         $this->middleware('auth');
+    }
 
-        return view('confessions.index');
+
+    public function index()
+    {
+
+        $confessions = Confession::with('photos')->get();
+        //return $confessions;
+
+        return view('confessions.index',compact('confessions'));
 
 
     }
 
     public function show()
     {
+
+
         return view('confessions.index');
     }
 
@@ -46,6 +57,8 @@ class ConfessionsController extends Controller
             });
 
         }
+        flash('添加成功','success');
+        return back();
 
         return $confession->load('photos');
 

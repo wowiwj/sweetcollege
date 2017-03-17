@@ -36,10 +36,13 @@
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">性别</label>
                         <div class="col-sm-6">
+
                             <select class="form-control" name="gender">
-                                <option value="unselected" selected="{{ $user->gender =="unselected" ? true :false }}">未选择</option>
-                                <option value="male" selected="{{ $user->gender =="mail" ? true :false }}">男</option>
-                                <option value="female" selected="{{ $user->gender =="femail" ? true :false }}">女</option></select>
+                                <option value="unselected" {{ $user->gender == 'unselected' ? 'selected' : '' }}>未选择</option>
+                                <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>男</option>
+                                <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>女</option>
+                            </select>
+
                         </div>
 
                         <div class="col-sm-4 help-block"></div>

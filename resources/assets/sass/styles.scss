@@ -4,11 +4,27 @@ body{
 
 }
 
+.div{
+  display: block;
+
+}
+
 .box {
   background-color: #fff;
   padding: 10px;
   margin: 0 0 20px 0;
   box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
+}
+
+.shadow{
+
+  background: #fff;
+  text-align: left;
+  width: 100%;
+  float: left;
+  -ms-box-shadow: 4px 11px 35px -14px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 11px 35px -14px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 11px 35px -14px
 }
 
 h3.media-heading{
@@ -113,4 +129,9 @@ span.timeago {
 .footer{
 
   border-top-color: #888a85;
+}
+
+.clear{
+
+  clear: both;
 }
