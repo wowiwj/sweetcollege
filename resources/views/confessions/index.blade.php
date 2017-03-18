@@ -55,6 +55,12 @@
                 <div class="clear"></div>
             </div>
 
+            <div class="text-center">
+                {!! $confessions->render() !!}
+            </div>
+
+
+
 
 
         </div>
