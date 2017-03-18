@@ -27,8 +27,8 @@ class SessionsController extends Controller
 
 
             if (Auth::user()->activated) {
-                flash('欢迎回来', 'success');
-                return redirect('home');
+                flash('尊敬的'.Auth::user()->name.',欢迎回来', 'success');
+                return redirect()->route('users.show',['id'=>Auth::user()->id]);
                 //return redirect()->intended(route("users.show", [Auth::user()]));
             }else{
                 Auth::logout();

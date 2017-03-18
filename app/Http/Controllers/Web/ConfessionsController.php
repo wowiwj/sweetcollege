@@ -21,7 +21,7 @@ class ConfessionsController extends Controller
     public function index()
     {
 
-        $confessions = Confession::with('photos')->get();
+        $confessions = Confession::with('photos')->orderBy('created_at','desc')->get();
         //return $confessions;
 
         return view('confessions.index',compact('confessions'));
