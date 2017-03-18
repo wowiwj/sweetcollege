@@ -17,6 +17,12 @@ class PhotosManager
         $this->thumbnail = $thumbnail ?: new Thumbnail;
     }
 
+    public static function make($path,$width,$height)
+    {
+        return (new Thumbnail())->makeImage($path,$width,$height);
+
+    }
+
 
     public function store()
     {

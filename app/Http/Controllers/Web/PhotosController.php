@@ -37,4 +37,23 @@ class PhotosController extends Controller
         ]);
 
     }
+
+    function image($name)
+    {
+        $width = request()->get('width') ?? 200;
+        $height = request()->get('height') ?? 200;
+
+
+
+        $image = Photo::where('name',$name)->first();
+        if (!$image){
+            return '图片已删除';
+        }
+
+        $path = $image->path;
+        $new = PhotosManager::make($path,$width,$height);
+
+        return $new->response('jpg');
+
+    }
 }

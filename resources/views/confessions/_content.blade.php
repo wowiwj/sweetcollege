@@ -1,12 +1,25 @@
 <div class="confession-content">
-    <div class="fh5co-property">
+    <div class="fh5co-property box">
 
         <div class="fh5co-property-innter ">
-            <h3><a href="#">{{ $confession->content  }}</a></h3>
-            <div class="price-status">
-                头像 学校
+
+            <div class="avatar-box">
+                <a href="{{ route('users.show',$confession->user->id) }}" title="{{ $confession->user->name }}">
+                    <div class="pull-left">
+                        <img class="media-object img-thumbnail avatar avatar-middle" alt="Aufree" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/100/h/100">
+                    </div>
+                    <div class="name pull-left">
+                        <div>
+                            {{ $confession->user->name }}
+                        </div>
+                        <div class="timeago">发表于 {{ $confession->created_at->diffForhumans() }}</div>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta magni amet atque doloremque velit unde adipisci omnis hic quaerat.</p>
+
+            <p class="content">{{ $confession->content  }}</p>
 
             @if(count($confession->photos) )
 
@@ -19,20 +32,50 @@
                             </li>
 
                         @endforeach
-
                     </ul>
-
-                    <div class="clear"></div>
-
                 </div>
+
             @endif
+
+            {{--用户信息--}}
+            <div class="user-info">
+                来自: &nbsp;<span>XXX大学</span>&nbsp;<span>XXX学院</span>&nbsp;<span>XXX班</span>
+            </div>
 
 
         </div>
 
 
-        <p class="fh5co-property-specification">
-            <span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
+        <p class="interactive">
+            <a href="#">
+                <span class="glyphicon glyphicon-heart-empty"
+                      aria-hidden="true">
+                </span> <span class="number">0</span>
+            </a>
+
+            <a href="#">
+                <span class="glyphicon glyphicon-hand-right"
+                      aria-hidden="true">
+                </span> <span class="number">0</span>
+            </a>
+
+            <a href="#">
+                <span class="glyphicon glyphicon-hand-down"
+                      aria-hidden="true">
+                </span> <span class="number">0</span>
+            </a>
+
+            <a href="#">
+                <span class="glyphicon glyphicon-edit"
+                      aria-hidden="true">
+                </span> <span class="number">0</span>
+            </a>
+
+            <a href="#">
+                <span class="glyphicon glyphicon-share"
+                      aria-hidden="true">
+            </a>
+
         </p>
     </div>
 </div>

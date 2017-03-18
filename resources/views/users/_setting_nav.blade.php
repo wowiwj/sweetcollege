@@ -4,9 +4,13 @@
             <a href="{{ route('users.edit',Auth::user()->id)  }}" class="list-group-item {{ navIsActive('users.edit')  }}">
                 个人信息
             </a>
+            <a href="#" class="list-group-item ">
+                学校信息
+            </a>
             <a href="#" class="list-group-item {{ navIsActive('users.edit_avatar')  }}">
                 修改头像
             </a>
+
             <a href="#" class="list-group-item ">
                 消息通知
             </a>

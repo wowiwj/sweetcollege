@@ -96,16 +96,18 @@
 
       }
 
-      .fh5co-property {
+      .fh5co-property.box {
         background: $brand-white;
         text-align: left;
         width: 100%;
         float: left;
-        -webkit-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
-        -moz-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
-        -ms-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
-        -o-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
-        box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
+        padding: 0;
+        margin-bottom: 0px;
+        //-webkit-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
+        //-moz-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
+        //-ms-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
+        //-o-box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
+        //box-shadow: 4px 11px 35px -14px rgba(0,0,0,.5);
         div {
           margin-bottom: 0;
           //position: relative;
@@ -117,23 +119,26 @@
 
 
           }
-          .tag {
-
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 2px 10px;
-            background: $brand-primary;
-            color: $brand-white;
-            @include inline-block;
-          }
         }
-        .fh5co-property-specification {
+        // 用户交互样式
+        .interactive {
           border-top: 1px solid lighten($brand-black, 94%);
           background: lighten($brand-black, 97%);
-          padding: 15px 30px 15px 30px;
-          font-size: 13px;
+          padding: 5px;
+          font-size: 20px;
           margin-bottom: 0;
+
+          a{
+            margin-left: 20px;
+            .number{
+
+              font-size: 12px;
+            }
+
+          }
+
+
+
           > span {
             margin-right: 10px;
             strong {
@@ -141,43 +146,61 @@
             }
           }
         }
+
+
         .fh5co-property-innter {
           padding: 30px 30px 30px 30px;
+          padding-bottom: 10px;
+          .avatar-box{
+            margin-left: -20px;
+            img.img-thumbnail{
+              width: 44px;
+              height: 44px;
+            }
+            .name{
+              &:after{
+                clear: both;
+              }
+
+              .timeago{
+                color: #8c8c8c;
+                font-size: 12px;
+
+              }
+
+              //line-height: 44px;
+              font-size: 16px;
+              padding-left: 6px;
+              color: #555;
+
+            }
+
+          }
           p {
             color: #96a0ae;
             &:last-child {
               margin-bottom: 0;
             }
           }
-          h3 {
-            margin-bottom: 20px;
-            a {
-              &:hover, &:active, &:focus {
-                text-decoration: none;
-              }
-            }
+          p.content {
+            padding-top: 5px;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 18px;
           }
+
+
         }
-        .price-status {
-          margin-bottom: 20px;
-          .price {
-            font-size: 28px;
-            color: $brand-secondary;
-            margin-bottom: 10px;
-            position: relative;
-            .per {
-              font-size: 12px;
-              text-transform: uppercase;
-            }
 
-          }
+        .user-info{
 
+          background-color: #F2FBF7;
+          margin-top: 10px;
+          font-size: 10px;
         }
       }
 
-
     }
-
 
 }
 
