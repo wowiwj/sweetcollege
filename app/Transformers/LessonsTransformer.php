@@ -3,15 +3,18 @@
 namespace App\Transformers;
 
 
-class LessonsTransformer extends Transformer {
+use App\Models\Lesson;
+use League\Fractal\TransformerAbstract;
+
+class LessonsTransformer extends TransformerAbstract  {
 
 
-    public function transform($lesson)
+    public function transform(Lesson $lesson)
     {
         return [
-            'title' => $lesson['title'],
-            'content' => $lesson['body'],
-            'is_free' => (boolean) $lesson['free']
+            'title' => $lesson->title,
+            'content' => $lesson->body,
+            'is_free' => (boolean) $lesson->free
 
         ];
     }

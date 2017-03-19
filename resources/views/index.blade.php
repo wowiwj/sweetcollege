@@ -7,7 +7,7 @@
             <h1>SweetCollege校园社区!</h1>
             <p>在这里,你可以发表想法,沟通心灵
                 This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+            <p><a class="btn btn-primary btn-lg" href="{{ route('login') }}" role="button">立即登录 »</a></p>
         </div>
     </div>
 

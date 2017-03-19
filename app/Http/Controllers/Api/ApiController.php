@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Pagination\Paginator;
+use League\Fractal\Manager;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use Response;
 use Symfony\Component\HttpFoundation\Response as Foundationresponse;
 
@@ -15,6 +18,20 @@ use Symfony\Component\HttpFoundation\Response as Foundationresponse;
 class ApiController extends Controller
 {
 
+
+    /**
+     * @var Manager
+     */
+    protected $fractal;
+
+    /**
+     * ApiController constructor.
+     */
+    public function __construct()
+    {
+        $this->fractal = new Manager();
+
+    }
 
     /**
      * @var int
@@ -102,26 +119,48 @@ class ApiController extends Controller
     }
 
     /**
-     * @param Paginator $paginator
-     * @param $data
+     * @param $item
+     * @param $callback
      * @return mixed
      */
-    public function respondWithPagination(Paginator $paginator, $data,$status = "success")
+    public function respondWithItem($item, $callback)
     {
+        $resource = new Item($item,$callback);
+        $rootScope = $this->fractal->createData($resource);
 
-        $paginator = [
-            'total_count' => $paginator->total(),
-            'current_page' => $paginator->currentPage(),
-            'total_pages' => ceil($paginator->total() / $paginator->perPage()),
-            'limit' => (int) $paginator-> perPage()
-        ];
+        return $this->respondWithSuccess($rootScope->toArray());
 
-        return $this->respondWithStatus($status,[
+    }
 
-            'data' => $data,
-            'paginator' => $paginator
+    /**
+     * @param $collection
+     * @param $callback
+     * @return mixed
+     */
+    public function respondWithCollection($collection, $callback)
+    {
+        $resource = new Collection($collection,$callback);
+        $rootScope = $this->fractal->createData($resource);
+        return $this->respondWithSuccess($rootScope->toArray());
 
-        ]);
+    }
+
+
+
+
+    /**
+     * @param $paginator
+     * @param $callback
+     * @param string $status
+     * @return mixed
+     */
+    public function respondWithPaginator($paginator, $callback, $status='success')
+    {
+        $resource = new Collection($paginator->getCollection(),$callback);
+        $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
+        $rootScope = $this->fractal->createData($resource);
+
+        return $this->respondWithStatus($status,$rootScope->toArray());
 
     }
 

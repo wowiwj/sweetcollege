@@ -22,9 +22,9 @@ class LessonsController extends ApiController
      * LessonsController constructor.
      * @param LessonsTransformer $lessonTransformer
      */
-    public function __construct(LessonsTransformer $lessonTransformer)
+    public function __construct()
     {
-        $this->lessonTransformer = $lessonTransformer;
+        parent::__construct();
     }
 
     /**
@@ -36,10 +36,7 @@ class LessonsController extends ApiController
 
 
         $lessons = Lesson::paginate($limit);
-
-        $data = $this->lessonTransformer->transformCollection($lessons->all());
-
-        return $this->respondWithPagination($lessons,$data);
+        return $this->respondWithPaginator($lessons,new LessonsTransformer());
 
     }
 
@@ -56,10 +53,7 @@ class LessonsController extends ApiController
 
         }
 
-
-        return $this->respondWithSuccess(
-            $this->lessonTransformer->transform($lesson)
-        );
+        return $this->respondWithItem($lesson,new LessonsTransformer());
     }
 
     public function store()
