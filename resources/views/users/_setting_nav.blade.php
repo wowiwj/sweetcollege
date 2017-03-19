@@ -4,7 +4,7 @@
             <a href="{{ route('users.edit',Auth::user()->id)  }}" class="list-group-item {{ navIsActive('users.edit')  }}">
                 个人信息
             </a>
-            <a href="#" class="list-group-item ">
+            <a href="{{ route('users.school_edit',Auth::user()->id) }}" class="list-group-item {{ navIsActive('users.school_edit')  }}">
                 学校信息
             </a>
             <a href="#" class="list-group-item {{ navIsActive('users.edit_avatar')  }}">

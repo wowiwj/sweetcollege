@@ -20,6 +20,8 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'activated' => 1,
+        'avatar' => $faker->imageUrl(200,200),
     ];
 });
 
@@ -33,19 +35,39 @@ $factory->define(App\Models\Lesson::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Confession::class, function (Faker\Generator $faker) {
+
+    $user_ids = App\Models\User::pluck('id')->random();
 
     return [
-        'user_id' => $faker->factory('App\Models\User')->create()->id,
+        'user_id' => $user_ids,
+        'content' => $faker->sentence(),
+
+    ];
+});
+
+$factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
+
+    $user_ids = App\Models\User::pluck('id')->random();
+
+    $confession_ids = App\Models\Confession::pluck('id')->random();
+    $types = ['App\Models\Confession'];
+    return [
+        'user_id' => $user_ids,
         'name' => $faker->sentence,
-        'path' => $faker->sentence,
-        'thumbnail_path' => $faker->sentence,
+        'path' => $faker->imageUrl(),
+        'thumbnail_path' => $faker->imageUrl(200,200),
+        'commentable_type'    => $types[0],
+        'commentable_id'      => $confession_ids,
 
     ];
 });
 
 
-$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+
+
+
+$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->sentence

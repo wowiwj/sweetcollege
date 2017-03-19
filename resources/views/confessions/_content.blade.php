@@ -28,7 +28,7 @@
 
                         @foreach($confession->photos as $photo)
                             <li>
-                                <img data-original="{{ '/'.$photo->path }}" src="{{ '/'.$photo->thumbnail_path }}" alt="{{ $photo->name }}">
+                                <img data-original="{{$photo->path }}" src="{{$photo->thumbnail_path }}" alt="{{ $photo->name }}">
                             </li>
 
                         @endforeach

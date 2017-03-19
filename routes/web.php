@@ -27,6 +27,7 @@ Route::get('/test', function (){
 Route::group(['namespace' => 'Web'], function () {
 
     Route::resource('users','UsersController');
+    Route::get('users/{user}/school_edit','UsersController@schoolEdit')->name('users.school_edit');
 
     Route::post('register','UsersController@store');
 

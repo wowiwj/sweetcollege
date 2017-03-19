@@ -33,6 +33,7 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+        $user->sendVerifyEmail();
 
 
         flash('验证邮件已发送到你的注册邮箱上，请注意查收。','important');
@@ -57,6 +58,14 @@ class UsersController extends Controller
         $this->authorize('update',$user);
 
         return view('users.edit',compact('user'));
+    }
+
+    public function schoolEdit(User $user)
+    {
+//        return $user;
+        $this->authorize('update',$user);
+        return view('users.edit_school',compact('user'));
+
     }
 
     public function update(Request $request,User $user)
