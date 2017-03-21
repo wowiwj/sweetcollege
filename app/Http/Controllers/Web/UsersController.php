@@ -9,16 +9,27 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Naux\Mail\SendCloudTemplate;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers\Web
+ */
 class UsersController extends Controller
 {
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
 
         return view('users.index');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -44,6 +55,10 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(User $user)
     {
 
@@ -52,6 +67,10 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(User $user)
     {
 
@@ -60,6 +79,10 @@ class UsersController extends Controller
         return view('users.edit',compact('user'));
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function schoolEdit(User $user)
     {
 //        return $user;
@@ -68,7 +91,12 @@ class UsersController extends Controller
 
     }
 
-    public function update(Request $request,User $user)
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return array|\Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, User $user)
     {
 
         $this->authorize('update',$user);

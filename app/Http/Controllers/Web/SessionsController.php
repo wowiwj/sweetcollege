@@ -7,10 +7,18 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class SessionsController
+ * @package App\Http\Controllers\Web
+ */
 class SessionsController extends Controller
 {
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $this->validate($request, [

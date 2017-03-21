@@ -9,7 +9,7 @@
 
             <div class="publish-confessions box">
 
-                <form method="POST" action="{{ route('confessions.store')  }}" enctype="multipart/form-data" name = 'sayConfessions'>
+                <form method="POST" action="{{ route('confessions.store')  }}" enctype="multipart/form-data" name = 'sayConfessions' accept-charset="UTF-8">
 
                     {{ csrf_field()  }}
 
@@ -66,7 +66,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="box">
+            <div class="box hidden-sm">
                 @include('users._baseinfo')
             </div>
 

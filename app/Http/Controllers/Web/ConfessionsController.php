@@ -9,15 +9,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class ConfessionsController
+ * @package App\Http\Controllers\Web
+ */
 class ConfessionsController extends Controller
 {
 
+    /**
+     * ConfessionsController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
 
@@ -29,6 +39,9 @@ class ConfessionsController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
 
@@ -37,6 +50,10 @@ class ConfessionsController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
 

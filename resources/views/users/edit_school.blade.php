@@ -23,112 +23,59 @@
                     {{ csrf_field()  }}
                     {{ method_field('PATCH') }}
 
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">用户名</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="name" type="text" value="{{ $user->name }}" disabled>
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            目前用户名不支持修改
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">性别</label>
-                        <div class="col-sm-6">
-
-                            <select class="form-control" name="gender">
-                                <option value="unselected" {{ $user->gender == 'unselected' ? 'selected' : '' }}>未选择</option>
-                                <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>男</option>
-                                <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>女</option>
-                            </select>
-
-                        </div>
-
-                        <div class="col-sm-4 help-block"></div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">邮 箱</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="email" type="text" value="{{ $user->email }}" disabled>
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            目前邮箱不支持修改
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">真实姓名</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="real_name" type="text" value="{{ $user->real_name }}">
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            如：李小明
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">城市</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="city" type="text" value="{{ $user->city }}">
+                            <select name="city" class="js-example-tags form-control">
+                                <option></option>
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：北京、广州
+                            如:扬州市,没有的话回车添加
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">微博用户名</label>
+                        <label for="" class="col-sm-2 control-label">学校</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" name="real_name" type="text" value="{{ $user->real_name }}">
+                        </div>
+                        <div class="col-sm-4 help-block">
+                            如：扬州大学
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">学院</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" name="city" type="text" value="{{ $user->city }}">
+                        </div>
+                        <div class="col-sm-4 help-block">
+                            如：信息工程学院
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-6">
                             <input class="form-control" name="weibo_name" type="text" value="">
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：wangju
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">微博个人页面</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="weibo_link" type="text" value="">
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            微博个人主页链接，如：http://weibo.com/laravelnews
+                            如：软件工程
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">个人网站</label>
+                        <label for="" class="col-sm-2 control-label">入学年份</label>
                         <div class="col-sm-6">
                             <input class="form-control" name="personal_website" type="text" value="">
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：example.com，不需要加前缀 https://
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">个人简介</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="3" name="introduction" cols="50" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;">{{ $user->introduction }}</textarea>
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            请一句话介绍你自己，大部分情况下会在你的头像和名字旁边显示
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">署名</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="3" name="signature" cols="50" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            文章署名，会拼接在每一个你发表过的帖子内容后面。支持 Markdown。
+                            如：2014年
                         </div>
                     </div>
 
@@ -137,6 +84,7 @@
                             <input class="btn btn-primary" id="user-edit-submit" type="submit" value="应用修改">
                         </div>
                     </div>
+
                 </form>
             </div>
 
@@ -144,5 +92,115 @@
     </div>
 
 
+
+@endsection
+
+@section('scripts.footer')
+
+    <script>
+
+        function  formatCity(city) {
+
+            return city.name;
+        }
+
+        function  formatCitySelection(city) {
+
+            return city.name || city.text;
+        }
+
+//        $(".js-example-tags").select2({
+//            tags: true,
+//            tokenSeparators: [",", " "],
+//            createSearchChoice: function(term, data) {
+//
+//
+//                alert(1);
+//                if ($(data).filter(function() {
+//                            return this.text.localeCompare(term) === 0;
+//                        }).length === 0) {
+//                    return {
+//                        id: term,
+//                        text: term
+//                    };
+//                }
+//            },
+//            multiple: true,
+//            ajax: {
+//                url: '/api/v1/cities',
+//                dataType: "json",
+//
+//                delay: 250,
+//                data: function(term, page) {
+//                    return {
+//                        q: term
+//                    };
+//                },
+//                results: function(data, page) {
+//                    return {
+//                        results: data.data.name
+//                    };
+//                }
+//            }
+//        });
+
+
+
+        $(".js-example-tags").select2({
+            tags:true,
+            placeholder:'请选择城市',
+            createSearchChoice: function(term, data) {
+                alert(1);
+                if ($(data).filter(function() {
+                            return this.text.localeCompare(term) === 0;
+                        }).length === 0) {
+                    return {
+                        id: term,
+                        text: term
+                    };
+                }
+            },
+            ajax: {
+                url: "/api/v1/cities",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (data) {
+
+
+                    var append = [{}];
+
+                    if (data.data.length == 0)
+                    {
+                        console.log(data.data);
+                        console.log(this.$element);
+//                        return {
+//                            results: [{
+//                                'id':'999',
+//                                'name':'舒服舒服'
+//                            }]
+//                        };
+                    }
+
+                    return {
+                        results: data.data
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 1,
+            templateResult: formatCity, // omitted for brevity, see the source of this page
+            templateSelection: formatCitySelection // omitted for brevity, see the source of this page
+        })
+        
+        
+
+
+    </script>
 
 @endsection

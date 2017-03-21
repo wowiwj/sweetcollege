@@ -74,6 +74,13 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\City::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->city
+    ];
+});
+
 
 
 

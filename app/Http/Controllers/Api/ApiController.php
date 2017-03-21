@@ -102,9 +102,7 @@ class ApiController extends Controller
     public function respondWithSuccess($data, $status = "success")
     {
 
-        return $this->respondWithStatus($status,[
-            'data' => $data
-        ]);
+        return $this->respondWithStatus($status,$data);
     }
 
     /**
