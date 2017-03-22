@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\ResetPassword;
+use App\Notifications\SendActivatedEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Mail;
@@ -56,21 +57,7 @@ class User extends Authenticatable
 
     public function sendVerifyEmail()
     {
-        $user = $this;
-        // 模板变量
-        $bind_data = [
-            'url' => route('email.verify',['token'=>$user->activation_token]),
-            'name' => $user->name
-        ];
-        $template = new SendCloudTemplate('sweetcollege_app_register', $bind_data);
-
-        Mail::raw($template, function ($message) use($user) {
-            $message->from('sweetcollage@Sweetcollege.cn', 'SweetCollege');
-
-            $message->to($user->email);
-        });
-
-
+        $this->notify(new SendActivatedEmail($this));
     }
 
     function  sendPasswordResetNotification($token)

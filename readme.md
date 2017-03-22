@@ -21,7 +21,7 @@ Laravel使用版本:5.4,后续会根据Laravel版本的升级来升级使用的�
 
 ## License
 
-使用 SweetCollege 构建，或者基于 SweetCollege 源代码修改的站点 必须 在页脚加上 Powered by SweetCollege 字样，并且必须链接到 https://sweetcollege.cn 上。必须 在页面的每一个标题上加上 Powered by SweetCollege 字样。
+使用 SweetCollege 构建，或者基于 SweetCollege 源代码修改的站点 必须 在页脚加上 Powered by SweetCollege 字样，并且必须链接到 http://sweetcollege.cn 上。必须 在页面的每一个标题上加上 Powered by SweetCollege 字样。
 在遵守以上规则的情况下，你可以享受等同于 MIT 协议的授权。
 
 或者你可以联系 35649084@qq.com 购买商业授权，商业授权允许移除页脚和标题的 Powered by SweetCollege 字样。

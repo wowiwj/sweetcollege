@@ -97,16 +97,20 @@ img {
 /* Header */
 
 .header {
+    background-color: #00b5ad;
+    color: white;
     padding: 25px 0;
     text-align: center;
 }
 
 .header a {
-    color: #bbbfc3;
+    /*background-color: #00b5ad;*/
+    color: white;
+    /*color: #bbbfc3;*/
     font-size: 19px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
+    /*text-shadow: 0 1px 0 white;*/
 }
 
 /* Body */
