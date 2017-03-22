@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::resource('users','UsersController');
     Route::get('users/{user}/school_edit','UsersController@schoolEdit')->name('users.school_edit');
+    Route::patch('users/{user}/school_update','UsersController@updateSchool')->name('users.update_school');
 
     Route::post('register','UsersController@store');
 

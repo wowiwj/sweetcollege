@@ -17,10 +17,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=>'v1'],function (){
-    Route::resource('lessons','Api\LessonsController');
+Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
+    Route::resource('lessons','LessonsController');
 
-    Route::get('cities','Api\CitiesController@index');
+    Route::get('cities','CitiesController@index');
+
+    Route::get('cities/{city}/schools','SchoolsController@index');
+
+
+    Route::get('academies','AcademiesController@index');
+    Route::get('academies/{academy}/majors','MajorsController@index');
 
 
 });

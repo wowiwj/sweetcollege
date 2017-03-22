@@ -18,61 +18,80 @@
                     编辑学校信息
                 </h2>
                 <hr>
-                <form class="form-horizontal" method="POST" action="{{ route('users.update',Auth::user()->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST" action="{{ route('users.update_school',Auth::user()->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
                     {{ csrf_field()  }}
                     {{ method_field('PATCH') }}
 
 
                     <div class="form-group">
+
                         <label for="" class="col-sm-2 control-label">城市</label>
                         <div class="col-sm-6">
-                            <select name="city" class="js-example-tags form-control">
-                                <option></option>
+                            <select name="city" class="city form-control">
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如:扬州市,没有的话回车添加
+                            学校所在的市 如:扬州市,没有的话Enter添加
                         </div>
                     </div>
 
-
                     <div class="form-group">
+
                         <label for="" class="col-sm-2 control-label">学校</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="real_name" type="text" value="{{ $user->real_name }}">
+                            <select name="school" class="school form-control">
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：扬州大学
+                            如:扬州大学,没有的话Enter添加
                         </div>
                     </div>
 
+
                     <div class="form-group">
+
                         <label for="" class="col-sm-2 control-label">学院</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="city" type="text" value="{{ $user->city }}">
+                            <select name="academy" class="academy form-control">
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：信息工程学院
+                            如:信息工程,没有的话Enter添加
                         </div>
                     </div>
 
 
                     <div class="form-group">
+
                         <label for="" class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="weibo_name" type="text" value="">
+                            <select name="major" class="major form-control">
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：软件工程
+                            如:软件工程,没有的话Enter添加
                         </div>
                     </div>
+
+
 
 
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">入学年份</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="personal_website" type="text" value="">
+                            <select name="enrollment_year" class="form-control">
+                                <option value="2010">2010届</option>
+                                <option value="2010">2011届</option>
+                                <option value="2010">2012届</option>
+                                <option value="2010">2013届</option>
+                                <option value="2010">2014届</option>
+                                <option value="2010">2015届</option>
+                                <option value="2010">2016届</option>
+                                <option value="2010">2017届</option>
+                                <option value="2010">2018届</option>
+                                <option value="2010">2019届</option>
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
                             如：2014年
@@ -99,69 +118,130 @@
 
     <script>
 
-        function  formatCity(city) {
-
-            return city.name;
-        }
-
-        function  formatCitySelection(city) {
-
-            return city.name || city.text;
-        }
-
-//        $(".js-example-tags").select2({
-//            tags: true,
-//            tokenSeparators: [",", " "],
-//            createSearchChoice: function(term, data) {
-//
-//
-//                alert(1);
-//                if ($(data).filter(function() {
-//                            return this.text.localeCompare(term) === 0;
-//                        }).length === 0) {
-//                    return {
-//                        id: term,
-//                        text: term
-//                    };
-//                }
-//            },
-//            multiple: true,
-//            ajax: {
-//                url: '/api/v1/cities',
-//                dataType: "json",
-//
-//                delay: 250,
-//                data: function(term, page) {
-//                    return {
-//                        q: term
-//                    };
-//                },
-//                results: function(data, page) {
-//                    return {
-//                        results: data.data.name
-//                    };
-//                }
-//            }
-//        });
 
 
+        $(document).ready(function () {
 
-        $(".js-example-tags").select2({
-            tags:true,
-            placeholder:'请选择城市',
-            createSearchChoice: function(term, data) {
-                alert(1);
-                if ($(data).filter(function() {
-                            return this.text.localeCompare(term) === 0;
-                        }).length === 0) {
-                    return {
-                        id: term,
-                        text: term
-                    };
+            function  formatCity(city) {
+                return '<div class="select2-results-respository clearfix">' +
+                '<div class="select2-results-respository__meta">' +
+                '<div class="select2-results__title">' +
+                city.name ? city.name : "Laravel" +
+                '</div>' +
+                '</div>' +
+                '</div>';
+
+            }
+
+            function  formatCitySelection(city) {
+
+                return city.name || city.text;
+            }
+
+            $(".city").select2({
+                tags:true,
+                placeholder:'请选择城市',
+                minimumInputLength: 1,
+                ajax: {
+                    url: "/api/v1/cities",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.data
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+                templateResult: function (school) {
+                    return school.name
+                }, // omitted for brevity, see the source of this page
+                templateSelection: function (school) {
+                    return school.name || school.text;
+                }// omitted for brevity, see the source of this page
+            });
+
+            function getSchoolData(val) {
+
+                if (isNaN(val))
+                {
+                    return;
                 }
-            },
+
+                $(".school").select2({
+                    tags:true,
+                    placeholder:'请选择学校',
+                    minimumInputLength: 1,
+                    disabled:false,
+                    ajax: {
+                        url: "/api/v1/cities/" + val +"/schools",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term
+                            };
+                        },
+                        processResults: function (data) {
+                            return {
+                                results: data.data
+                            };
+                        },
+                        cache: true
+                    },
+                    escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+                    templateResult: formatCity, // omitted for brevity, see the source of this page
+                    templateSelection: formatCitySelection // omitted for brevity, see the source of this page
+                });
+
+
+
+            }
+
+
+            $(".city").change(function(){
+
+                var options = $('.city option');
+
+                if(options.length == 0)
+                {
+
+                    $(".school").select2({
+                        tags:true,
+                        placeholder:'请先学校学校所在的市',
+                        disabled:true
+
+                    });
+                    return;
+                }
+
+                if(options.length != 0){
+
+                    getSchoolData($(this).val());
+                    return;
+                }
+
+
+            });
+
+            $(".city").change();
+
+
+
+
+
+        $(".academy").select2({
+            tags:true,
+            placeholder:'请选择学院',
+            minimumInputLength: 1,
             ajax: {
-                url: "/api/v1/cities",
+                url: "/api/v1/academies",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -170,35 +250,97 @@
                     };
                 },
                 processResults: function (data) {
-
-
-                    var append = [{}];
-
-                    if (data.data.length == 0)
-                    {
-                        console.log(data.data);
-                        console.log(this.$element);
-//                        return {
-//                            results: [{
-//                                'id':'999',
-//                                'name':'舒服舒服'
-//                            }]
-//                        };
-                    }
-
                     return {
                         results: data.data
                     };
                 },
                 cache: true
             },
-            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-            minimumInputLength: 1,
-            templateResult: formatCity, // omitted for brevity, see the source of this page
-            templateSelection: formatCitySelection // omitted for brevity, see the source of this page
-        })
-        
-        
+            escapeMarkup: function (markup) { return markup; },
+            templateResult: function (academy) {
+                return academy.name
+            },
+            templateSelection: function (academy) {
+                return academy.name || academy.text;
+            }
+        });
+
+        $(".academy").change(function(){
+
+            var options = $('.academy option');
+
+            if(options.length == 0)
+            {
+                $(".major").select2({
+                    tags:true,
+                    placeholder:'请先选择学院',
+                    disabled:true
+
+                });
+                return;
+            }
+
+            if(options.length != 0){
+
+                getAcademyData($(this).val());
+                return;
+            }
+
+
+        });
+
+        $(".academy").change();
+
+
+        function getAcademyData(val) {
+
+
+            if (isNaN(val))
+            {
+                $(".major").select2({
+                    tags:true,
+                    placeholder:'请选择专业',
+                    disabled:false
+
+                });
+                return;
+            }
+
+            $(".major").select2({
+                tags:true,
+                placeholder:'请选择专业',
+                minimumInputLength: 1,
+                disabled:false,
+                ajax: {
+                    url: "/api/v1/academies/"+val+"/majors",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.data
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function (markup) { return markup; },
+                templateResult: function (major) {
+                    return major.name
+                },
+                templateSelection: function (major) {
+                    return major.name || major.text;
+                }
+            });
+
+
+        }
+
+        });
+
 
 
     </script>

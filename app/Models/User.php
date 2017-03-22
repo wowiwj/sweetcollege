@@ -19,7 +19,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','gender','real_name','city','introduction'
+        'name',
+        'email',
+        'password',
+        'gender',
+        'real_name',
+        'city',
+        'introduction',
+        'school_id',
+        'major_id'
     ];
 
     /**
@@ -39,6 +47,17 @@ class User extends Authenticatable
     public function confessions(){
 
         return $this->hasMany(Confession::class);
+    }
+
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class);
     }
 
 

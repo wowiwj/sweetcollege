@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Models\Academy;
+use App\Models\City;
+use App\Models\Major;
+use App\Models\School;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Naux\Mail\SendCloudTemplate;
+use Prophecy\Argument\Token\AnyValuesToken;
 
 /**
  * Class UsersController
@@ -88,6 +94,82 @@ class UsersController extends Controller
 //        return $user;
         $this->authorize('update',$user);
         return view('users.edit_school',compact('user'));
+
+    }
+
+    public function updateSchool(Request $request)
+    {
+
+
+
+        if ($request->has('school')){
+            // 添加学校
+            $city = $this->getCity($request->city);
+
+            if (is_numeric($request->school)){
+                $school = School::find($request->school);
+                Auth::user()->school()->associate($school);
+                Auth::user()->save();
+                return $school;
+
+            }
+            $school = $city->schools()->create(['name'=>$request->school]);
+
+            Auth::user()->school()->associate($school);
+            Auth::user()->save();
+        }
+
+
+
+        // 添加学院
+
+        $academy = $this->getAcademy($request->academy);
+
+        if (is_numeric($request->major)){
+            $major = Major::find($request->major);
+            Auth::user()->major()->associate($major);
+            Auth::user()->save();
+            return $major;
+
+        }
+
+        $major = $academy->majors()->create(['name'=>$request->major]);
+        Auth::user()->major()->associate($major);
+        
+        Auth::user()->save();
+
+        return $major;
+
+
+
+
+        $city = City::findOrNew($request->city);
+
+        return $city;
+
+       return $request->all();
+
+    }
+
+    private function getCity($city)
+    {
+        if (is_numeric($city)){
+            return City::find($city);
+        }
+        return City::create([
+            'name' => $city
+        ]);
+
+    }
+
+    private function getAcademy($academy)
+    {
+        if (is_numeric($academy)){
+            return Academy::find($academy);
+        }
+        return Academy::create([
+            'name' => $academy
+        ]);
 
     }
 

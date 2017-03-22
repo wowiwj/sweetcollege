@@ -17,7 +17,7 @@ require('./main')
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('confessionsPublisher', require('./components/ConfessionsPublish.vue'));
-
+Vue.component('selectForm',require('./components/SelectForm.vue'));
 
 const app = new Vue({
     el: '#app'

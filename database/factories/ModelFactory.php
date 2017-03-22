@@ -64,6 +64,43 @@ $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\Models\City::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->city
+    ];
+});
+
+$factory->define(App\Models\School::class, function (Faker\Generator $faker) {
+
+    $city_ids = App\Models\City::pluck('id')->random();
+
+    return [
+        'city_id' => $city_ids,
+        'name' => $faker->sentence
+    ];
+});
+
+$factory->define(App\Models\Academy::class, function (Faker\Generator $faker) {
+
+
+    return [
+        'name' => $faker->sentence
+    ];
+});
+
+$factory->define(App\Models\Major::class, function (Faker\Generator $faker) {
+
+
+    $academy_ids = App\Models\Academy::pluck('id')->random();
+    return [
+        'academy_id' => $academy_ids,
+        'name' => $faker->sentence,
+        'enrollment_year' => '2015'
+    ];
+});
+
+
 
 
 
@@ -74,12 +111,7 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\City::class, function (Faker\Generator $faker) {
 
-    return [
-        'name' => $faker->city
-    ];
-});
 
 
 
