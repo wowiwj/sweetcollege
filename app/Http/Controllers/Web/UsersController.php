@@ -100,8 +100,6 @@ class UsersController extends Controller
     public function updateSchool(Request $request)
     {
 
-
-
         if ($request->has('school')){
             // 添加学校
             $city = $this->getCity($request->city);
@@ -110,44 +108,44 @@ class UsersController extends Controller
                 $school = School::find($request->school);
                 Auth::user()->school()->associate($school);
                 Auth::user()->save();
-                return $school;
+
+            }else{
+                $school = $city->schools()->create(['name'=>$request->school]);
+
+                Auth::user()->school()->associate($school);
+                Auth::user()->save();
+            }
+        }
+
+
+        if ($request->has('academy')){
+            // 添加学院
+
+            $academy = $this->getAcademy($request->academy);
+
+            if (is_numeric($request->major)){
+                $major = Major::find($request->major);
+                Auth::user()->major()->associate($major);
+
+
+            }else{
+                $major = $academy->majors()->create(['name'=>$request->major]);
+                Auth::user()->major()->associate($major);
 
             }
-            $school = $city->schools()->create(['name'=>$request->school]);
 
-            Auth::user()->school()->associate($school);
+            Auth::user()->major()->enrollment_year = $request->enrollment_year;
+
             Auth::user()->save();
-        }
-
-
-
-        // 添加学院
-
-        $academy = $this->getAcademy($request->academy);
-
-        if (is_numeric($request->major)){
-            $major = Major::find($request->major);
-            Auth::user()->major()->associate($major);
-            Auth::user()->save();
-            return $major;
 
         }
 
-        $major = $academy->majors()->create(['name'=>$request->major]);
-        Auth::user()->major()->associate($major);
-        
-        Auth::user()->save();
-
-        return $major;
+        flash('修改成功','success');
+        return back();
 
 
 
 
-        $city = City::findOrNew($request->city);
-
-        return $city;
-
-       return $request->all();
 
     }
 

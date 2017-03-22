@@ -29,6 +29,9 @@
                         <label for="" class="col-sm-2 control-label">城市</label>
                         <div class="col-sm-6">
                             <select name="city" class="city form-control">
+                                @if($user->school)
+                                    <option value="{{ $user->school->city->id }}">{{ $user->school->city->name }}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
@@ -41,6 +44,9 @@
                         <label for="" class="col-sm-2 control-label">学校</label>
                         <div class="col-sm-6">
                             <select name="school" class="school form-control">
+                                @if($user->school)
+                                    <option value="{{ $user->school->id }}">{{ $user->school->name }}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
@@ -54,9 +60,13 @@
                         <label for="" class="col-sm-2 control-label">学院</label>
                         <div class="col-sm-6">
                             <select name="academy" class="academy form-control">
+                                @if($user->major)
+                                    <option value="{{ $user->major->academy->id }}">{{ $user->major->academy->name }}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
+
                             如:信息工程,没有的话Enter添加
                         </div>
                     </div>
@@ -67,6 +77,9 @@
                         <label for="" class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-6">
                             <select name="major" class="major form-control">
+                                @if($user->major)
+                                    <option value="{{ $user->major->id }}">{{ $user->major->name }}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
