@@ -27,7 +27,8 @@ class User extends Authenticatable
         'city',
         'introduction',
         'school_id',
-        'major_id'
+        'major_id',
+        'enrollment_year'
     ];
 
     /**

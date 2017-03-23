@@ -22,6 +22,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         'activated' => 1,
         'avatar' => $faker->imageUrl(200,200),
+        'enrollment_year' => '2015'
     ];
 });
 
@@ -58,7 +59,8 @@ $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
         'path' => $faker->imageUrl(),
         'thumbnail_path' => $faker->imageUrl(200,200),
         'commentable_type'    => $types[0],
-        'commentable_id'      => $confession_ids,
+        'commentable_id'      => $confession_ids
+
 
     ];
 });
@@ -95,8 +97,7 @@ $factory->define(App\Models\Major::class, function (Faker\Generator $faker) {
     $academy_ids = App\Models\Academy::pluck('id')->random();
     return [
         'academy_id' => $academy_ids,
-        'name' => $faker->sentence,
-        'enrollment_year' => '2015'
+        'name' => $faker->sentence
     ];
 });
 

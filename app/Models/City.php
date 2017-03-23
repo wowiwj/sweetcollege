@@ -14,4 +14,27 @@ class City extends Model
 
     }
 
+    public static function byIdOrName($value)
+    {
+        if (is_numeric($value)){
+            return static::find($value);
+        }
+
+        return static::firstOrCreate([
+            'name' => $value
+        ]);
+    }
+
+    public function schoolWithIdOrName($value)
+    {
+        if (is_numeric($value)){
+            return static::find($value);
+        }
+
+
+        return $this->schools()->firstOrCreate([
+            'name' => $value
+        ]);
+    }
+
 }

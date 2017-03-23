@@ -18,4 +18,16 @@ class School extends Model
         return $this->hasMany(User::class);
     }
 
+    public static function byIdOrName($value)
+    {
+        if (is_numeric($value)){
+            return static::find($value);
+        }
+
+        return static::firstOrCreate([
+            'name' => $value
+        ]);
+
+    }
+
 }

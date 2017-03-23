@@ -94,16 +94,17 @@
                         <label for="" class="col-sm-2 control-label">入学年份</label>
                         <div class="col-sm-6">
                             <select name="enrollment_year" class="form-control">
-                                <option value="2010">2010届</option>
-                                <option value="2010">2011届</option>
-                                <option value="2010">2012届</option>
-                                <option value="2010">2013届</option>
-                                <option value="2010">2014届</option>
-                                <option value="2010">2015届</option>
-                                <option value="2010">2016届</option>
-                                <option value="2010">2017届</option>
-                                <option value="2010">2018届</option>
-                                <option value="2010">2019届</option>
+                                <option value="0">未选择</option>
+                                <option value="2010" {{ $user->enrollment_year != 2010 ?: 'selected' }}>2010届</option>
+                                <option value="2011" {{ $user->enrollment_year != 2011 ?: 'selected' }}>2011届</option>
+                                <option value="2012" {{ $user->enrollment_year != 2012 ?: 'selected' }}>2012届</option>
+                                <option value="2013" {{ $user->enrollment_year != 2013 ?: 'selected' }}>2013届</option>
+                                <option value="2014" {{ $user->enrollment_year != 2014 ?: 'selected' }}>2014届</option>
+                                <option value="2015" {{ $user->enrollment_year != 2015 ?: 'selected' }}>2015届</option>
+                                <option value="2016" {{ $user->enrollment_year != 2016 ?: 'selected' }}>2016届</option>
+                                <option value="2017" {{ $user->enrollment_year != 2017 ?: 'selected' }}>2017届</option>
+                                <option value="2018" {{ $user->enrollment_year != 2018 ?: 'selected' }}>2018届</option>
+                                <option value="2019" {{ $user->enrollment_year != 2019 ?: 'selected' }}>2019届</option>
                             </select>
                         </div>
                         <div class="col-sm-4 help-block">
@@ -184,6 +185,12 @@
 
                 if (isNaN(val))
                 {
+                    $(".school").select2({
+                        tags:true,
+                        placeholder:'请添加学校名称',
+                        disabled:false
+
+                    });
                     return;
                 }
 

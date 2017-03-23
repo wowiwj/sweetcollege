@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Major;
 use App\Models\School;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 use Illuminate\Http\Request;
@@ -97,64 +98,40 @@ class UsersController extends Controller
 
     }
 
-    public function updateSchool(Request $request)
+    public function updateSchool(Request $request,User$user)
     {
-
-        if ($request->has('school')){
+        $this->authorize('update',$user);
+        if ($request->has('school')) {
             // 添加学校
-            $city = $this->getCity($request->city);
-
-            if (is_numeric($request->school)){
-                $school = School::find($request->school);
-                Auth::user()->school()->associate($school);
-                Auth::user()->save();
-
-            }else{
-                $school = $city->schools()->create(['name'=>$request->school]);
-
-                Auth::user()->school()->associate($school);
-                Auth::user()->save();
-            }
+            $school = City::byIdOrName($request->city)
+                            ->schoolWithIdOrName($request->school);
+            Auth::user()->school()->associate($school);
         }
 
 
         if ($request->has('academy')){
             // 添加学院
-
-            $academy = $this->getAcademy($request->academy);
-
-            if (is_numeric($request->major)){
-                $major = Major::find($request->major);
-                Auth::user()->major()->associate($major);
-
-
-            }else{
-                $major = $academy->majors()->create(['name'=>$request->major]);
-                Auth::user()->major()->associate($major);
-
-            }
-
-            Auth::user()->major()->enrollment_year = $request->enrollment_year;
-
-            Auth::user()->save();
+            $major = Academy::byIdOrName($request->academy)
+                                ->majorWithIdOrName($request->major);
+            Auth::user()->major()->associate($major);
 
         }
+
+        Auth::user()->enrollment_year = $request->enrollment_year;
+        Auth::user()->save();
 
         flash('修改成功','success');
         return back();
 
-
-
-
-
     }
+
 
     private function getCity($city)
     {
         if (is_numeric($city)){
             return City::find($city);
         }
-        return City::create([
+        return City::findOrCreate([
             'name' => $city
         ]);
 
@@ -165,7 +142,7 @@ class UsersController extends Controller
         if (is_numeric($academy)){
             return Academy::find($academy);
         }
-        return Academy::create([
+        return Academy::findOrCreate([
             'name' => $academy
         ]);
 

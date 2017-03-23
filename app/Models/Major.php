@@ -14,7 +14,7 @@ class Major extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name','enrollment_year'];
+    protected $fillable = ['name'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

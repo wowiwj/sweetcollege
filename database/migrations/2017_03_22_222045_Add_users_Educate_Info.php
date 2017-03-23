@@ -16,7 +16,7 @@ class AddUsersEducateInfo extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->integer('school_id')->nullable();
             $table->integer('major_id')->nullable();
-
+            $table->string('enrollment_year')->nullable();
         });
     }
 
@@ -30,6 +30,8 @@ class AddUsersEducateInfo extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('school_id');
             $table->dropColumn('major_id');
+            $table->dropColumn('enrollment_year');
+
         });
     }
 }

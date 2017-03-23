@@ -17,8 +17,6 @@ class CreateMajorsTable extends Migration
             $table->increments('id');
             $table->integer('academy_id')->unsigned();
             $table->string('name')->unique();
-            // 入学年份
-            $table->integer('enrollment_year')->nullable();
             $table->timestamps();
         });
     }
