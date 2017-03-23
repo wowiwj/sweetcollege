@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'gender',
         'real_name',
-        'city',
+        'city_id',
         'introduction',
         'school_id',
         'major_id',
@@ -59,6 +59,11 @@ class User extends Authenticatable
     public function major()
     {
         return $this->belongsTo(Major::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
 

@@ -14,6 +14,11 @@ class City extends Model
 
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
     public static function byIdOrName($value)
     {
         if (is_numeric($value)){

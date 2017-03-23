@@ -71,36 +71,20 @@
                     </div>
 
                     <div class="form-group">
+
                         <label for="" class="col-sm-2 control-label">城市</label>
                         <div class="col-sm-6">
-                            <input class="form-control" name="city" type="text" value="{{ $user->city }}">
+                            <select name="city" class="city form-control">
+                                @if($user->city)
+                                    <option value="{{ $user->city->id }}">{{ $user->city->name }}</option>
+                                @endif
+                            </select>
                         </div>
                         <div class="col-sm-4 help-block">
-                            如：北京、广州
+                            家乡所在的市 如：北京、广州,没有的话Enter添加
                         </div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">微博用户名</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="weibo_name" type="text" value="">
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            如：wangju
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">微博个人页面</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" name="weibo_link" type="text" value="">
-                        </div>
-                        <div class="col-sm-4 help-block">
-                            微博个人主页链接，如：http://weibo.com/laravelnews
-                        </div>
-                    </div>
-
+                    
 
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">个人网站</label>
@@ -146,3 +130,42 @@
 
 
 @endsection
+
+@section('scripts.footer')
+
+    <script>
+
+        $(".city").select2({
+            tags:true,
+            placeholder:'请选择城市',
+            minimumInputLength: 1,
+            ajax: {
+                url: "/api/v1/cities",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.data
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; },
+            templateResult: function (city) {
+                return city.name
+            },
+            templateSelection: function (city) {
+                return city.name || city.text;
+            }
+        });
+
+
+    </script>
+
+@endsection
+

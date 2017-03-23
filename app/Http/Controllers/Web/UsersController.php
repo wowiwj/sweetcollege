@@ -126,31 +126,6 @@ class UsersController extends Controller
     }
 
 
-    private function getCity($city)
-    {
-        if (is_numeric($city)){
-            return City::find($city);
-        }
-        return City::findOrCreate([
-            'name' => $city
-        ]);
-
-    }
-
-    private function getAcademy($academy)
-    {
-        if (is_numeric($academy)){
-            return Academy::find($academy);
-        }
-        return Academy::findOrCreate([
-            'name' => $academy
-        ]);
-
-    }
-
-
-
-
     /**
      * @param Request $request
      * @param User $user
@@ -167,6 +142,13 @@ class UsersController extends Controller
             'city' => $request->city,
             'introduction' => $request->introduction
         ]);
+
+        if ($request->has('city')){
+
+            $city = City::byIdOrName($request->city);
+            $user->city()->associate($city);
+        }
+
 
         $user->update($data);
         $user->save();

@@ -18,7 +18,7 @@ class AddUserInfoForUsers extends Migration
             $table->string('real_name')->nullable();
             $table->enum('gender', ['male', 'female', 'unselected'])
                 ->default('unselected');
-            $table->string('city')->nullable();
+            $table->integer('city_id')->nullable();
             $table->timestamp('last_actived_at')->nullable();
 
         });
