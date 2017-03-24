@@ -59,8 +59,13 @@
 
 .confessions-contents{
 
+
+  .panel-body{
+    padding: 0px;
+  }
+
     .confession-content{
-      margin-bottom: 1em;
+      //margin-bottom: 1em;
       float: left;
       width: 100%;
 
@@ -195,7 +200,8 @@
 
         .user-info{
 
-          background-color: #F2FBF7;
+          background-color: #f8f8f8;
+          //background-color: #F2FBF7;
           margin-top: 10px;
           font-size: 10px;
         }

@@ -92,9 +92,16 @@ class UsersController extends Controller
      */
     public function schoolEdit(User $user)
     {
-//        return $user;
         $this->authorize('update',$user);
         return view('users.edit_school',compact('user'));
+
+    }
+
+
+    public function aditAvatar(User $user)
+    {
+        $this->authorize('update',$user);
+        return view('users.edit_avatar',compact('user'));
 
     }
 
@@ -139,7 +146,6 @@ class UsersController extends Controller
         $data = array_filter([
             'gender' => $request->gender,
             'real_name' => $request->real_name,
-            'city' => $request->city,
             'introduction' => $request->introduction
         ]);
 
@@ -156,11 +162,6 @@ class UsersController extends Controller
         flash('用户资料更新成功','success');
 
         return back();
-
-        return $data;
-
-
-        return request()->all();
     }
 
 }

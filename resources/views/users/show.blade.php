@@ -6,7 +6,7 @@
 
     <div class="users-show row">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="box">
                 @include('users._baseinfo')
@@ -19,7 +19,7 @@
 
         </div>
 
-        <div class="main-col col-md-8 left-col">
+        <div class="main-col col-md-9 left-col">
 
 
             <div class="panel panel-default">

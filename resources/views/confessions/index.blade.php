@@ -5,7 +5,7 @@
 
     <div class="confessions row">
 
-        <div class="col-md-8">
+        <div class="col-md-9">
 
             <div class="publish-confessions box">
 
@@ -46,26 +46,34 @@
 
             <div class="confessions-contents">
 
-                @foreach($confessions as $confession)
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        时光树洞
+                    </div>
 
-                    @include('confessions._content')
+                    <div class="panel-body">
 
-                @endforeach
+                            @foreach($confessions as $confession)
 
-                <div class="clear"></div>
+                                @include('confessions._content')
+
+                            @endforeach
+
+                            <div class="clear"></div>
+
+
+                        <div class="text-center">
+
+                            {!! $confessions->render() !!}
+                        </div>
+
+                    </div>
+                </div>
             </div>
-
-            <div class="text-center">
-                {!! $confessions->render() !!}
-            </div>
-
-
-
-
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="box hidden-sm">
                 @include('users._baseinfo')
             </div>

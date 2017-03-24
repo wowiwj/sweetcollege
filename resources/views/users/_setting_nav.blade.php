@@ -7,9 +7,11 @@
             <a href="{{ route('users.school_edit',Auth::user()->id) }}" class="list-group-item {{ navIsActive('users.school_edit')  }}">
                 学校信息
             </a>
-            <a href="#" class="list-group-item {{ navIsActive('users.edit_avatar')  }}">
+            <a href="{{ route('users.adit_avatar',Auth::user()->id) }}" class="list-group-item {{ navIsActive('users.adit_avatar')  }}">
                 修改头像
             </a>
+
+
 
             <a href="#" class="list-group-item ">
                 消息通知

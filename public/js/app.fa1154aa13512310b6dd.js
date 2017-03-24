@@ -12597,9 +12597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             msg: 'hello vue'
         };
     },
-    mounted: function mounted() {
-        alert(1);
-    },
+    mounted: function mounted() {},
 
     components: {}
 };

@@ -1,12 +1,12 @@
 
 
-<div class="padding-sm user-basic-info">
+<div class="padding-md user-basic-info">
     <div style="">
         <div class="media">
             <div class="media-left">
                 <div class="image">
                     <a href="#" class="popover-with-html" data-content="修改头像" data-original-title="" title="">
-                        <img class="media-object avatar-101 avatar img-thumbnail" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/200/h/200"></a>
+                        <img class="media-object avatar-80 avatar img-thumbnail" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/200/h/200"></a>
                 </div>
 
             </div>

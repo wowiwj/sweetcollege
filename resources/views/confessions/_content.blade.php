@@ -39,7 +39,22 @@
 
             {{--用户信息--}}
             <div class="user-info">
-                来自: &nbsp;<span>XXX大学</span>&nbsp;<span>XXX学院</span>&nbsp;<span>XXX班</span>
+
+
+                @if($confession->user->school)
+                    来自: &nbsp;<span>{{ $confession->user->school->name }}</span>&nbsp;
+
+                    @if($confession->user->major)
+                        <span>{{ $confession->user->major->academy->name }}</span>
+                        <span>{{ $confession->user->major->name }}</span>
+                    @endif
+
+                    @if($confession->user->enrollment_year)
+                        <span>{{ $confession->user->enrollment_year }}级</span>
+                    @endif
+                @else
+                    该用户并没有填写学校信息
+                @endif
             </div>
 
 

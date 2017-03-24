@@ -30,6 +30,10 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('users/{user}/school_edit','UsersController@schoolEdit')->name('users.school_edit');
     Route::patch('users/{user}/school_update','UsersController@updateSchool')->name('users.update_school');
 
+    //aditAvatar
+    Route::get('users/{user}/avatar_edit','UsersController@aditAvatar')->name('users.adit_avatar');
+    Route::patch('users/{user}/avatar_update','UsersController@updateAvatar')->name('users.update_avatar');
+
     Route::post('register','UsersController@store');
 
     Route::post('login','SessionsController@store');
