@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Major;
 use App\Models\School;
 use App\Models\User;
+use App\SweetCollege\PhotosManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -102,6 +103,25 @@ class UsersController extends Controller
     {
         $this->authorize('update',$user);
         return view('users.edit_avatar',compact('user'));
+
+    }
+
+    public function updateAvatar(User $user)
+    {
+        $this->authorize('update',$user);
+
+        $file = request()->file('avatar');
+        $photo = (new PhotosManager($file))->store();
+
+        $user->avatar = '/'.$photo->thumbnail_path;
+        $user->save();
+
+        flash('修改成功',"success");
+        return redirect()->back();
+
+
+        dd($photo);
+
 
     }
 

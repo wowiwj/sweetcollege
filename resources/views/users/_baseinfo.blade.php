@@ -5,7 +5,7 @@
         <div class="media">
             <div class="media-left">
                 <div class="image">
-                    <a href="#" class="popover-with-html" data-content="修改头像" data-original-title="" title="">
+                    <a href="{{ route('users.adit_avatar',$user->id) }}" class="popover-with-html" data-content="修改头像" data-original-title="" title="">
                         <img class="media-object avatar-80 avatar img-thumbnail" src="{{ $user->avatar }}"></a>
                 </div>
 
