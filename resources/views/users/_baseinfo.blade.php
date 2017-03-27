@@ -6,21 +6,21 @@
             <div class="media-left">
                 <div class="image">
                     <a href="#" class="popover-with-html" data-content="修改头像" data-original-title="" title="">
-                        <img class="media-object avatar-80 avatar img-thumbnail" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/200/h/200"></a>
+                        <img class="media-object avatar-80 avatar img-thumbnail" src="{{ $user->avatar }}"></a>
                 </div>
 
             </div>
             <div class="media-body">
                 <h3 class="media-heading">
 
-                    {{ Auth::user()->name  }}
+                    {{ $user->name  }}
 
                 </h3>
                 <div class="item">
 
                 </div>
                 <div class="item">
-                    第 {{ Auth::user()->id  }} 位会员
+                    第 {{ $user->id  }} 位会员
                 </div>
                 <div class="item number">
                     注册于 <span class="timeago popover-with-html" data-content="2016-11-18 20:26:34" data-original-title="" title="">{{ Auth::user()->created_at->diffForhumans()  }}</span>

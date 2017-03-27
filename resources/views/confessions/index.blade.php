@@ -75,7 +75,7 @@
 
         <div class="col-md-3">
             <div class="box hidden-sm">
-                @include('users._baseinfo')
+                @include('users._baseinfo',['user'=>Auth::user()])
             </div>
 
         </div>

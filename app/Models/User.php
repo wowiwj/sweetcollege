@@ -73,9 +73,23 @@ class User extends Authenticatable
 
         static::creating(function ($user){
             $user->activation_token = str_random(30);
-            $user->avatar = 'images/avatars/default/1.png';
         });
 
+    }
+
+
+    /**
+     * 获取头像
+     */
+    public function getAvatarAttribute($value)
+    {
+        if (!$value)
+        {
+            return "http://img01.skqkw.cn:888/touxiang/2014/06/16/15/20140616155026101610.jpg";
+
+        }
+
+        return $value;
     }
 
 

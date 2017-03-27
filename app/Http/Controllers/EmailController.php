@@ -23,7 +23,7 @@ class EmailController extends Controller
         if (is_null($user)){
 
             flash('验证token失败', 'danger');
-            return back();
+            return redirect('/');
 
         }
 

@@ -6,7 +6,7 @@
             <div class="avatar-box">
                 <a href="{{ route('users.show',$confession->user->id) }}" title="{{ $confession->user->name }}">
                     <div class="pull-left">
-                        <img class="media-object img-thumbnail avatar avatar-middle" alt="Aufree" src="https://dn-phphub.qbox.me/uploads/avatars/6932_1479471995.jpeg?imageView2/1/w/100/h/100">
+                        <img class="media-object img-thumbnail avatar avatar-middle" alt="{{ $confession->user->name }}" src="{{ $confession->user->avatar }}">
                     </div>
                     <div class="name pull-left">
                         <div>
