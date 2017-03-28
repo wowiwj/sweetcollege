@@ -36,6 +36,15 @@ class PhotosManager
 
     }
 
+    public function storeAvatar()
+    {
+        $path = 'images/avatars';
+        $name = $this->makeFileName();
+        $this->file->move($path,$name);
+        $this->thumbnail->make($path.'/'.$name,$path.'/'.$name);
+        return '/'.$path.'/'.$name;
+    }
+
     protected function makePhoto()
     {
         return new Photo([

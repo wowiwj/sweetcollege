@@ -111,9 +111,8 @@ class UsersController extends Controller
         $this->authorize('update',$user);
 
         $file = request()->file('avatar');
-        $photo = (new PhotosManager($file))->store();
-
-        $user->avatar = '/'.$photo->thumbnail_path;
+        $path = (new PhotosManager($file))->storeAvatar();
+        $user->avatar = $path;
         $user->save();
 
         flash('修改成功',"success");

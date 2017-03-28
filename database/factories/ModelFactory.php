@@ -113,8 +113,16 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\Models\Task::class, function (Faker\Generator $faker) {
 
+    $user_ids = \App\Models\User::pluck('id')->random();
+    return [
+        'user_id' => $user_ids,
+        'title' => $faker->sentence,
+        'content' => $faker->paragraph(),
+        'price' => $faker->numberBetween(1,9999),
+        'expiration_at' => $faker->dateTimeBetween($startDate = 'now', $endDate = '1 years', $timezone = date_default_timezone_get()),
+        'view_count' => $faker->numberBetween(1,888)
 
-
-
-
+    ];
+});

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\SendActivatedEmail;
+use Identicon\Identicon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Mail;
@@ -85,7 +86,9 @@ class User extends Authenticatable
     {
         if (!$value)
         {
-            return "http://img01.skqkw.cn:888/touxiang/2014/06/16/15/20140616155026101610.jpg";
+            $idention = new Identicon();
+            $imageDataUrl = $idention->getImageDataUri($this->name,200);
+            return $imageDataUrl;
 
         }
 

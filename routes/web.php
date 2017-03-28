@@ -43,6 +43,9 @@ Route::group(['namespace' => 'Web'], function () {
     Route::post('photos','PhotosController@upload')->name('photos.upload');
     Route::get('image/{name}','PhotosController@image')->name('photos.show');
 
+
+    Route::resource('tasks','TasksController');
+
 });
 
 

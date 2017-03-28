@@ -27,10 +27,17 @@
                     <div class="text-center">
                         <img width="160px" class="avatar-box img-circle" src="{{ $user->avatar }}" alt="{{ $user->name }}">
 
+
+
+                        <br>
                         <br>
 
-                        <input name="avatar" class="text-center" type="file">
+                        <input style="width: 200px" class="center-block" name="avatar" type="file">
 
+
+
+
+                        <br>
                         <br>
 
                         <div class="form-group">
