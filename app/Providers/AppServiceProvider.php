@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
 //        Schema::defaultStringLength(191);
 
         Carbon::setLocale('zh');
+
+
     }
 
     /**
@@ -29,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+
     }
 }

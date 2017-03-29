@@ -168,6 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+        Laravel\Passport\PassportServiceProvider::class,
+
         /*
          * 第三方 Providers...
          */

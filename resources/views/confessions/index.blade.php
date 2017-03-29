@@ -53,11 +53,13 @@
 
                     <div class="panel-body">
 
-                            @foreach($confessions as $confession)
+                            <confessions></confessions>
 
-                                @include('confessions._content')
+                            {{--@foreach($confessions as $confession)--}}
 
-                            @endforeach
+                                {{--@include('confessions._content')--}}
+
+                            {{--@endforeach--}}
 
                             <div class="clear"></div>
 

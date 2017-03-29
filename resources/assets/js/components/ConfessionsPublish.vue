@@ -24,53 +24,6 @@
     </div>
 </template>
 <style scoped>
-    .publish-confessions{
-        background-color: #F2FBF7;
-        padding: 20px;
-
-
-    }
-
-    input{
-
-        width: 1px;
-        height: 1px;
-
-    }
-
-    .fileinput-button input{
-        position:absolute;
-        right: 0px;
-        top:0px;
-        opacity: 0;
-        -ms-filter: 'alpha(opacity=0)';
-        font-size: 1px;
-    }
-
-    .mgb10{
-
-        margin-bottom: 10px;
-
-    }
-
-    .publish-confessions textarea{
-
-        padding-bottom: 10px;
-    }
-
-    .pushbutton{
-
-        background-color: #00b5ad;
-        color: white;
-
-
-    }
-
-
-    .clear{
-        clear: both;
-
-    }
 
 </style>
 <script>
@@ -82,51 +35,6 @@
             }
         },
         methods:{
-
-            submit(){
-
-                alert(eee);
-            },
-
-            upload(){
-
-                var input = document.getElementById('files');
-
-                var fileList = input.files;
-
-                var url = window.URL || window.webkitURL;
-
-                if (!url)
-                {
-                    alert("珍爱生命，远离IE浏览器");
-                    return;
-
-                }
-
-
-                var imageUrl = url.createObjectURL(fileList[0]);
-
-                var imgObjPreview=document.getElementById("preview");
-
-
-                imgObjPreview.style.display = 'block';
-                imgObjPreview.style.width = '300px';
-                imgObjPreview.style.height = '120px';
-
-                imgObjPreview.src = imageUrl;
-
-
-                console.log(imageUrl);
-
-                //console.log(fileList);
-
-            },
-            openFileInput(){
-
-                $('#files').click();
-                //alert(2);
-
-            }
 
         }
     }

@@ -7,6 +7,7 @@ use League\Fractal\Manager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
+use League\Fractal\Serializer\ArraySerializer;
 use Response;
 use Symfony\Component\HttpFoundation\Response as Foundationresponse;
 
@@ -30,6 +31,7 @@ class ApiController extends Controller
     public function __construct()
     {
         $this->fractal = new Manager();
+        $this->fractal->setSerializer(new ArraySerializer());
 
     }
 

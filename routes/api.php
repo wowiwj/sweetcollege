@@ -28,6 +28,8 @@ Route::group(['prefix'=>'v1','namespace' => 'Api'],function (){
     Route::get('academies','AcademiesController@index');
     Route::get('academies/{academy}/majors','MajorsController@index');
 
+    Route::resource('confessions','ConfessionsController');
+
 
 });
 
