@@ -12406,6 +12406,8 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_pagination__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__common_pagination__);
 //
 //
 //
@@ -12493,13 +12495,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
         return {
             msg: 'hello vue',
-            confessions: []
+            confessions: [],
+            page: 1,
+            pageCount: 0
         };
     },
     mounted: function mounted() {
@@ -12507,8 +12517,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         axios.get('/api/v1/confessions').then(function (response) {
             _this.confessions = response.data.data;
-            console.log(_this.confessions[1]);
+            _this.pageCount = response.data.meta.pagination.total_pages;
+            console.log(_this.pageCount);
         });
+    },
+
+    methods: {
+        loadpage: function loadpage(page) {
+            var _this2 = this;
+
+            axios.get('/api/v1/confessions?page=' + page).then(function (response) {
+                _this2.confessions = response.data.data;
+                console.log(_this2.confessions[1]);
+            });
+        },
+        pageChanged: function pageChanged(page) {
+            this.page = page;
+            this.loadpage(page);
+        }
+    },
+    components: {
+
+        'paginate': __WEBPACK_IMPORTED_MODULE_0__common_pagination___default.a
+
     }
 };
 
@@ -33557,7 +33588,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.confessions), function(confession) {
+  return _c('div', [_vm._l((_vm.confessions), function(confession) {
     return _c('div', {
       staticClass: "confession-content"
     }, [_c('div', {
@@ -33602,7 +33633,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }))]), _vm._v(" "), _c('div', {
       staticClass: "user-info"
     }, [_vm._v("\n                    该用户并没有填写学校信息\n\n                ")])]), _vm._v(" "), _vm._m(0, true)])])
-  }))
+  }), _vm._v(" "), _c('paginate', {
+    attrs: {
+      "page-count": _vm.pageCount
+    },
+    on: {
+      "changed": _vm.pageChanged
+    }
+  })], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticClass: "interactive"
@@ -43101,6 +43139,196 @@ module.exports = function(module) {
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+        return {
+            perCount: 5,
+            current: 1,
+            activeClass: 'active'
+
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+    computed: {
+        startPage: function startPage() {
+
+            if (this.current - Math.floor(this.perCount / 2) > 0) {
+
+                var startPage = this.current - Math.floor(this.perCount / 2);
+
+                if (startPage + this.perCount > this.pageCount) {
+                    return this.pageCount - this.perCount + 1;
+                }
+
+                return startPage;
+            }
+
+            return 1;
+        },
+        endpage: function endpage() {
+
+            if (this.startPage + Math.floor(this.perCount / 2) < this.pageCount) {
+                return this.startPage + Math.floor(this.perCount / 2);
+            }
+
+            return this.pageCount;
+        }
+
+    },
+
+    props: ['pageCount'],
+    methods: {
+        selectpage: function selectpage(index) {
+
+            if (this.current == index) {
+                return;
+            }
+            this.current = index;
+            this.$emit('changed', this.current);
+        }
+    }
+};
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(67),
+  /* template */
+  __webpack_require__(69),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wangju/Desktop/Code/PHP/SweetCollege/resources/assets/js/components/common/pagination.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] pagination.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7c992473", Component.options)
+  } else {
+    hotAPI.reload("data-v-7c992473", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "text-center"
+  }, [_c('nav', {
+    attrs: {
+      "aria-label": "Page navigation"
+    }
+  }, [_c('ul', {
+    staticClass: "pagination"
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.perCount), function(item, index) {
+    return _c('li', {
+      class: (_vm.current == index + _vm.startPage) ? _vm.activeClass : '',
+      on: {
+        "click": function($event) {
+          _vm.selectpage(index + _vm.startPage)
+        }
+      }
+    }, [_c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v(_vm._s(index + _vm.startPage))]), _vm._v("\n                    " + _vm._s(_vm.startPage) + "\n                ")])
+  }), _vm._v(" "), _c('li', [_vm._m(1), _vm._v("\n                    " + _vm._s(_vm.pageCount) + "\n                ")])], 2)])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "disabled"
+  }, [_c('a', {
+    attrs: {
+      "href": "#",
+      "aria-label": "Previous"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("«")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#",
+      "aria-label": "Next"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("»")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7c992473", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

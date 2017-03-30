@@ -77,6 +77,10 @@
                 </p>
             </div>
         </div>
+
+        <paginate v-on:changed="pageChanged" :page-count="pageCount"></paginate>
+
+
     </div>
 </template>
 <style scoped>
@@ -87,11 +91,17 @@
 </style>
 <script>
 
+    import pagination from './common/pagination'
+
+
+
     export default{
         data(){
             return{
                 msg:'hello vue',
-                confessions:[]
+                confessions:[],
+                page:1,
+                pageCount:0
             }
         },
         mounted(){
@@ -99,12 +109,33 @@
             axios.get('/api/v1/confessions')
                 .then(response=>{
                     this.confessions = response.data.data;
-                    console.log(this.confessions[1]);
-
-
-
+                    this.pageCount = response.data.meta.pagination.total_pages;
+                    console.log(this.pageCount);
                 });
 
+        },
+        methods:{
+            loadpage(page){
+
+                axios.get('/api/v1/confessions?page='+page)
+                    .then(response=>{
+                        this.confessions = response.data.data;
+                        console.log(this.confessions[1]);
+                    });
+            },
+            pageChanged(page)
+            {
+                this.page = page;
+                this.loadpage(page);
+            }
+
+
+
+
+        },
+        components:{
+
+            'paginate':pagination
 
         }
     }

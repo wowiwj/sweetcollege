@@ -55,20 +55,6 @@
 
                             <confessions></confessions>
 
-                            {{--@foreach($confessions as $confession)--}}
-
-                                {{--@include('confessions._content')--}}
-
-                            {{--@endforeach--}}
-
-                            <div class="clear"></div>
-
-
-                        <div class="text-center">
-
-                            {!! $confessions->render() !!}
-                        </div>
-
                     </div>
                 </div>
             </div>

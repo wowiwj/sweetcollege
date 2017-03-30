@@ -124,6 +124,13 @@ span.timeago {
   border-top-color: #888a85;
 }
 
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
 .clear{
 
   clear: both;
