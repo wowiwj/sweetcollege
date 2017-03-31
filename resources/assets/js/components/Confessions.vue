@@ -6,7 +6,7 @@
                 <div class="fh5co-property-innter ">
 
                     <div class="avatar-box">
-                        <a href="#" title="测试昵称">
+                        <a :href="'users/'+confession.user.id" title="测试昵称">
                             <div class="pull-left">
                                 <img class="media-object img-thumbnail avatar avatar-middle" :alt="confession.user.name" :src="confession.user.avatar">
                             </div>
@@ -19,16 +19,23 @@
                             <div class="clear"></div>
                         </a>
 
+
                     </div>
 
                     <p class="content">{{ confession.content }}</p>
 
 
-                    <div class="images-view">
+
+                    <div class="images-view" v-show="confession.photos.data.length > 0">
                         <ul class="photos clearfix">
 
+
+
                             <li v-for="photo in confession.photos.data">
-                                <img data-original="photo.path" :src="photo.thumbnail_path" :alt="photo.name">
+                                <a :href="photo.path" :data-fancybox="confession.id" :data-caption="confession.content">
+                                    <img :src="photo.thumbnail_path" alt="" />
+                                </a>
+                                <!--<img data-original="photo.path" :src="photo.thumbnail_path" :alt="photo.name">-->
                             </li>
 
                         </ul>
@@ -93,8 +100,6 @@
 
     import pagination from './common/pagination'
 
-
-
     export default{
         data(){
             return{
@@ -114,11 +119,19 @@
                 });
 
         },
+        updated(){
+            $("[data-fancybox]").fancybox({
+                image : {
+                    protect: true
+                }
+            });
+        },
         methods:{
             loadpage(page){
 
                 axios.get('/api/v1/confessions?page='+page)
                     .then(response=>{
+                        this.confessions = [];
                         this.confessions = response.data.data;
                         console.log(this.confessions[1]);
                     });

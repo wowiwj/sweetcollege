@@ -12,13 +12,11 @@
 
                     <li v-bind:class="(current==index + startPage) ? activeClass : ''"   @click="selectpage(index+startPage)"   v-for="(item,index) in perCount">
                         <a href="#">{{ index+ startPage}}</a>
-                        {{ startPage }}
                     </li>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
-                        {{ pageCount }}
                     </li>
                 </ul>
             </nav>

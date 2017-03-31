@@ -11,7 +11,8 @@ window.$ = window.jQuery = require('jquery');
 
 require('bootstrap-sass');
 
-require('./libs/select2.min')
+// require('./libs/select2.min')
+require('./libs/jquery.fancybox.min')
 
 
 /**
