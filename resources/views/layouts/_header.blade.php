@@ -21,8 +21,8 @@
             <ul class="nav navbar-nav">
                 &nbsp;<li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">主页</a></li>
                 <li class="{{ Request::is('confessions*') ? 'active' : '' }}"><a href="{{ route('confessions.index') }}">表白墙</a></li>
+                <li class="{{ Request::is('articles*') ? 'active' : '' }}"><a href=" {{ route('articles.index') }}">文学</a></li>
                 <li class="{{ Request::is('tasks*') ? 'active' : '' }}"><a href="{{ route('tasks.index') }}">众包</a></li>
-                <li><a href="#">文学</a></li>
                 <li><a href="#">活动</a></li>
                 <li><a href="#">话题与交流</a></li>
             </ul>

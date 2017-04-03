@@ -170,6 +170,8 @@ return [
 
         Laravel\Passport\PassportServiceProvider::class,
 
+        LaravelChen\Editormd\EditorMdProvider::class,
+
         /*
          * 第三方 Providers...
          */

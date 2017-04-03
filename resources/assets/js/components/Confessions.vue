@@ -82,6 +82,20 @@
                     </a>
 
                 </p>
+
+                <div class="comments" v-show="false">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            评论
+                            <button class="pull-right">排序方式</button>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -90,9 +104,29 @@
 
     </div>
 </template>
-<style scoped>
+<style scoped lang="scss">
     body{
         background-color:#ff0000;
+    }
+    .confession-content{
+
+        margin-bottom: 5px;
+
+    }
+
+    .comments{
+        padding: 20px;
+        padding-top: 5px;
+        .panel-default{
+            .panel-heading{
+                background-color: #FFFFFF;
+
+            }
+
+
+
+        }
+
     }
 
 </style>
@@ -141,7 +175,6 @@
                 this.page = page;
                 this.loadpage(page);
             }
-
 
 
 

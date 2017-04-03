@@ -46,6 +46,8 @@ Route::group(['namespace' => 'Web'], function () {
 
     Route::resource('tasks','TasksController');
 
+    Route::resource('articles','ArticlesController');
+
 });
 
 

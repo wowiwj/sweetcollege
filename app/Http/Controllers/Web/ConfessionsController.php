@@ -77,7 +77,6 @@ class ConfessionsController extends Controller
         flash('添加成功','success');
         return back();
 
-        return $confession->load('photos');
 
     }
 }

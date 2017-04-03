@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21fde2c95d5563eafe3e309c1887c10b",
-    "content-hash": "520c873e460213c1eb3933ba26a0cb22",
+    "hash": "c296eafc3878a478f702cea0a11b3e9c",
+    "content-hash": "f1063bd928dfcb57856cd24b6006d4e5",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -852,6 +852,42 @@
                 "psysh"
             ],
             "time": "2016-12-30 18:13:17"
+        },
+        {
+            "name": "laravelchen/laravel-editormd",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelChen/laravel-editormd.git",
+                "reference": "5c1287d58ff3ef5ee74b834ec4bdfe6f7371291a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/LaravelChen/laravel-editormd/5c1287d58ff3ef5ee74b834ec4bdfe6f7371291a.zip",
+                "reference": "5c1287d58ff3ef5ee74b834ec4bdfe6f7371291a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelChen\\Editormd\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "LaravelChen",
+                    "email": "848407695@qq.com"
+                }
+            ],
+            "description": "laravel-editor-mb",
+            "time": "2017-03-25 04:20:03"
         },
         {
             "name": "lcobucci/jwt",

@@ -12506,6 +12506,40 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -15272,13 +15306,7 @@ exports = module.exports = __webpack_require__(4)();
 exports.push([module.i, "\nbody[data-v-1fa7ba9b]{\n    background-color:#ff0000;\n}\n", ""]);
 
 /***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)();
-exports.push([module.i, "\nbody[data-v-2be8b9a1]{\n    background-color:#ff0000;\n}\n\n", ""]);
-
-/***/ }),
+/* 43 */,
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32383,7 +32411,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
 
 /* styles */
-__webpack_require__(57)
+__webpack_require__(72)
 
 var Component = __webpack_require__(2)(
   /* script */
@@ -32656,7 +32684,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })])])
     }))]), _vm._v(" "), _c('div', {
       staticClass: "user-info"
-    }, [_vm._v("\n                    该用户并没有填写学校信息\n\n                ")])]), _vm._v(" "), _vm._m(0, true)])])
+    }, [_vm._v("\n                    该用户并没有填写学校信息\n\n                ")])]), _vm._v(" "), _vm._m(0, true), _vm._v(" "), _c('div', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (false),
+        expression: "false"
+      }],
+      staticClass: "comments"
+    }, [_vm._m(1, true)])])])
   }), _vm._v(" "), _c('paginate', {
     attrs: {
       "page-count": _vm.pageCount
@@ -32722,6 +32758,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("\n                        评论\n                        "), _c('button', {
+    staticClass: "pull-right"
+  }, [_vm._v("排序方式")])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._v("\n                        Panel content\n                    ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -32903,32 +32949,7 @@ if(false) {
 }
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(43);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(6)("307d7d40", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2be8b9a1&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Confessions.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2be8b9a1&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Confessions.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 57 */,
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42899,6 +42920,39 @@ module.exports = __webpack_require__(14);
     }, 50);
   });
 }(document, window, window.jQuery);
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+exports.push([module.i, "\nbody[data-v-2be8b9a1] {\n  background-color: #ff0000;\n}\n.confession-content[data-v-2be8b9a1] {\n  margin-bottom: 5px;\n}\n.comments[data-v-2be8b9a1] {\n  padding: 20px;\n  padding-top: 5px;\n}\n.comments .panel-default .panel-heading[data-v-2be8b9a1] {\n    background-color: #FFFFFF;\n}\n", ""]);
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("9304b93a", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2be8b9a1&scoped=true!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Confessions.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2be8b9a1&scoped=true!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Confessions.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

@@ -14,13 +14,26 @@ class PhotosManager
     public function __construct(UploadedFile $file,Thumbnail $thumbnail = null)
     {
         $this->file = $file;
-        $this->thumbnail = $thumbnail ?: new Thumbnail;
+        $this->thumbnail = $thumbnail ?: new Thumbnail(200,200);
     }
 
     public static function make($path,$width,$height)
     {
-        return (new Thumbnail())->makeImage($path,$width,$height);
+        return (new Thumbnail($width,$height))->makeWithPath($path);
 
+    }
+
+    public function makeImage(UploadedFile $file,$width,$height)
+    {
+        $path = 'upload/images';
+        $fileName = $this->makeFileName();
+        $this->file->move($path,$fileName);
+
+        $filePath = $path.'/'.$fileName;
+
+        static::make($filePath,$width,$height)->save($filePath);
+
+        return $filePath;
     }
 
 

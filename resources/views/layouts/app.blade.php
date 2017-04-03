@@ -14,6 +14,8 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/libs.css') }}" rel="stylesheet">
 
+    @yield('scripts.header')
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

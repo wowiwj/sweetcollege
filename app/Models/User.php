@@ -41,6 +41,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function photos()
     {
         return $this->hasMany(Photo::class);

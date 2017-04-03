@@ -12,6 +12,7 @@
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
+        "laravelchen/laravel-editormd": "^2.0",
         "league/fractal": "^0.15.0",
         "naux/sendcloud": "^1.1",
         "yzalis/identicon": "^1.1"
